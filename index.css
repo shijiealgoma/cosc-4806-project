@@ -1,0 +1,127 @@
+header, footer {
+  background: linear-gradient(90deg, rgba(0,123,255,1) 0%, rgba(0,76,255,1) 100%);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+header h1 {
+  font-family: 'Arial', sans-serif;
+  font-size: 2.5rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #c5d1eb;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  /* width: 80%; */
+  margin: 0 auto;
+  /* padding: 20px; */
+}
+
+header {
+  background-color: #35424a;
+  color: #ffffff;
+  /* padding: 10px 0;
+  text-align: center; */
+}
+
+header h1 {
+  margin: 0;
+}
+
+
+nav a {
+  margin: 0 15px;
+  text-decoration: none;
+  color: #35424a;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+.navbar-brand, .nav-link{
+  color:#ffffff;
+}
+
+.main-content {
+  background-color: #ffffff;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.main-content h2 {
+  color: #35424a;
+}
+
+.main-content p {
+  line-height: 1.6;
+}
+
+.main-title {
+  color: lightblue;
+  text-align: left;
+  font-size: 40px;
+  font-weight: 800;
+}
+
+.title-style{
+  background: #1E6ECF;
+  background: linear-gradient(to right, #5ca9e7 0%, #ff002f 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight:800;
+}
+
+footer {
+  background-color: #35424a;
+  color: #ffffff;
+  text-align: center;
+  padding: 10px 0;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+
+.inRow{
+  width: 100%;
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-content: center;
+}
+
+.pr50{
+  padding-right:50px;
+}
+
+.logins-table td,
+.logins-table th{
+  padding: 0 10px;
+}
+
+
+.chat-th{
+  width: 400px;
+  max-width:100%;
+}
+
+.bar {
+    height: 20px;
+    background-color: #4CAF50;
+    text-align: center;
+    color: white;
+    animation: colorChange 3s infinite;
+    border-radius: 10px;
+}
+
+
+@keyframes colorChange {
+  0% { background-color: #4CAF50; }
+  50% { background-color: #456da1; }
+  100% { background-color: #4CAF50; }
+}
