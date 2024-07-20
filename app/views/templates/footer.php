@@ -1,23 +1,8 @@
 <footer class="footer">   
     <div class="container">
         <div class="row">
-            <div class="col-md-12 text-center my-3">
-                <h2><b>COSC-4806</b></h2>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4">
-                <h5>About Us</h5>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            </div>
-            <div class="col-md-4">
-                <h5>Contact Us</h5>
-                <p>Email: ssun@algomau.ca</p>
-            </div>
-            <div class="col-md-4">
-                <h5>Follow Us</h5>
-                <a href="#" class="text-white mr-2">Facebook</a>
-                <a href="#" class="text-white mr-2">Twitter</a>
+            <div class="col-md-12 my-3">
+                <h2><b>COSC-4806-Project</b></h2>
             </div>
         </div>
         <div class="row">

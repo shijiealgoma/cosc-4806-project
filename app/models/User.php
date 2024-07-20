@@ -63,7 +63,7 @@ class User {
             // echo "admin status: " . $_SESSION['admin'];
                 
             
-			header('Location: /home');
+			header('Location: /omdb');
 			die;
 		} else {
             // echo "Login failed";
