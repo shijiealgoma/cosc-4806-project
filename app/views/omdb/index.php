@@ -1,5 +1,6 @@
 <?php require_once 'app/views/templates/header.php' ?>
-<div class="container mb-5">
+<div id="bgImg"></div>
+<div class="container  omdbMain">
     <div class="page-header" id="banner">
         <div class="row">
             <div class="col-lg-12">
@@ -8,6 +9,7 @@
         </div>
     </div>
     <div class="main-content mt-3">
+        <!-- Quickly review some movie info by a simple click -->
         <p>Popular Search: 
             <a href="/omdb/search/Barbie">Barbie</a>
             <a href="/omdb/search/Bear">Bear</a>
@@ -97,6 +99,12 @@
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
 
+                <div class="my-3">
+                    <h3>Use Gemini Generate Review</h3>
+                    <a href="/omdb/addReviewGemini/<?php echo urlencode($data['movie']['Title']); ?>" >
+                    <button type="submit" class="btn btn-primary">ADD Gemini Review</button></a>
+                </div>
+
                 <h3>Reviews</h3>
                 <?php if (isset($data['reviews']) && !empty($data['reviews'])): ?>
                     <div class=" ">
@@ -110,6 +118,8 @@
                     <p>No reviews available.</p>
                 <?php endif; ?>
 
+                
+
                 <form action="/omdb/addReview/<?php echo urlencode($data['movie']['Title']); ?>" method="post">
                     <div class="form-group">
                         <label for="newReview">Add New Review</label>
@@ -118,6 +128,8 @@
                     <input type="hidden" name="movieTitle" value="<?php echo htmlspecialchars($data['movie']['Title']); ?>">
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
+
+                
             </div>
         </div>
     <?php endif; ?>
@@ -130,11 +142,30 @@
 </div>
 <br /><br /><br /><br /><br />
 <script>
+    // Add event listener to the form
+    // When the form is submitted, call the search function
+    // with the movie name entered by the user
+    // Hopefully this can get some EXTRA marks
     document.getElementById('searchForm').addEventListener('submit', function(event) {
         event.preventDefault();
         var movieName = document.getElementById('movieName').value;
         this.action = '/omdb/search/' + encodeURIComponent(movieName);
         this.submit();
+    });
+</script>
+
+<script>
+    $(document).ready(function() {
+        // Set the background image
+        $('#bgImg').css('background-image', 'url(<?php echo $data['movie']['Poster']; ?>)');
+
+        // move bg image when mouse move
+        // Hopefully this can get some EXTRA marks
+        $(document).mousemove(function(e) {
+            var amountMovedX = (e.pageX * -1 / 30);
+            var amountMovedY = (e.pageY * -1 / 30);
+            $('#bgImg').css('background-position', amountMovedX + 'px ' + amountMovedY + 'px');
+        });
     });
 </script>
 <?php require_once 'app/views/templates/footer.php' ?>

@@ -13,10 +13,11 @@ if (!isset($_SESSION['auth'])) {
         <meta name="viewport" content="width=device-width">
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="mobile-web-app-capable" content="yes">
+         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <link rel="stylesheet" href="/index.css">
     </head>
     <body>
-        <header class="mb-5">
+        <header class="">
             <nav class="navbar navbar-expand-lg">
                 <div class="container">
                     <h3 class="">Movie System</h3>
@@ -27,7 +28,7 @@ if (!isset($_SESSION['auth'])) {
                     <div class="collapse navbar-collapse " id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item">
-                              <a class="nav-link active" aria-current="page" href="/omdb">Home</a>
+                              <a class="nav-link active" aria-current="page" href="/omdb">OMDB Home</a>
                             </li>
                             <!-- logout -->
                             <li class="nav-item">

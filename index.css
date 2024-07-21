@@ -128,3 +128,22 @@ main{
 .yellow{
   color: #ca8b02;
 }
+
+#bgImg{
+  width:100vw;
+  height:100vh;
+  top: 0;
+  left: 0;
+  position: fixed;
+  z-index: -1;
+  background: #f9f9f9;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity:0.1
+}
+
+.omdbMain{
+  background: #f9f9f999;
+  padding:100px 20px;
+}
