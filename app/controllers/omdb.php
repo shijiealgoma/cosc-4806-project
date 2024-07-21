@@ -14,16 +14,19 @@ class Omdb extends Controller {
     }
 
     // Search by title
-    public function search(){
+    public function search($movieName){
         $movies = [];
         $rates = -1;
         $reviews = [];
+
+        
  
-        // echo "Search by title";
-        // echo $_POST['movieName'];
+        echo "Search by title";
+        echo $movieName;
+        // die;
 
       
-        $query_url = "http://www.omdbapi.com/?t=" . $_POST['movieName'] . "&apikey=" . $_ENV['omdb_key'];
+        $query_url = "http://www.omdbapi.com/?t=" . $movieName . "&apikey=" . $_ENV['omdb_key'];
 
       
         $data = file_get_contents($query_url);
@@ -32,14 +35,14 @@ class Omdb extends Controller {
         $data = json_decode($data, true);
         $movies = (array) $data;
 
-         echo "<br/>";
+        echo "<br/>";
         echo "<h1>Search Results</h1>";
         print_r($movies);
         
         if (!empty($movies)) {
-              echo "<br/>";
-              echo "<h1>movies['Search']</h1>";
-              echo "<br/>";
+              // echo "<br/>";
+              // echo "<h1>movies['Search']</h1>";
+              // echo "<br/>";
 
                 $titlename = $movies['Title'];
 
@@ -47,6 +50,8 @@ class Omdb extends Controller {
               echo "<br/>";
 
                 $movieModel = $this->model('Movie');
+
+                $movieName = urldecode($movieName);
               
                 //getMovieIdByName
                 $movieId = $movieModel->getMovieIdByName($titlename);
@@ -74,39 +79,43 @@ class Omdb extends Controller {
 
         
         $movie_rating = $_POST['newRate'];
-        $movie_title = $movieTitle;
-        echo "<br/>";
-        echo "movie_title: " . $movie_title;
-        echo "<br/>";
-        echo "movie_rating: " . $movie_rating;
+        $movie_title = urldecode($movieTitle);
+        // echo "<br/>";
+        // echo "movie_title: " . $movie_title;
+        // echo "<br/>";
+        // echo "movie_rating: " . $movie_rating;
       
         if ($movie_title && $movie_rating) {
             $movieId = $movieModel->getMovieIdByName($movie_title);
-            echo "<br/>";
-            echo "Movie ID: " . $movieId;
+            // echo "<br/>";
+            // echo "Movie ID: " . $movieId;
             if ($movieId) {
-                echo "<br/>";
-                echo "Has Movie ID!";
+                // echo "<br/>";
+                // echo "Has Movie ID!";
                 $movieModel->addMovieRate($movieId, $movie_rating);
             } else {
-                echo "<br/>";
-                echo "NO Movie ID!";
+                // echo "<br/>";
+                // echo "NO Movie ID!";
                 // Add movie if not exist
                 $movieModel->addMovie($movie_title);
                 $movieId = $movieModel->getMovieIdByName($movie_title);
                 $movieModel->addMovieRate($movieId, $movie_rating);
             }
         }
+
+        header('Location: /omdb/search/' . $movieTitle);
+        exit();
     }
 
     // Add review: title and review
-    public function addReview($movie_title, ){
+    public function addReview($movieTitle, ){
         $movieModel = $this->model('Movie');
         $movie_review = $_POST['newReview'];
-        echo "<br/>";
-        echo "movie_title: " . $movie_title;
-        echo "<br/>";
-        echo "movie_review: " . $movie_review;
+        $movie_title = urldecode($movieTitle);
+        // echo "<br/>";
+        // echo "movie_title: " . $movie_title;
+        // echo "<br/>";
+        // echo "movie_review: " . $movie_review;
       
         if ($movie_title && $movie_review) {
             $movieId = $movieModel->getMovieIdByName($movie_title);
@@ -119,5 +128,8 @@ class Omdb extends Controller {
                 $movieModel->addMovieReview($movieId, $movie_review);
             }
         }
+
+        header('Location: /omdb/search/' . $movieTitle);
+        exit();
     }
 }

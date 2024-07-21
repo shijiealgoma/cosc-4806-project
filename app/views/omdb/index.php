@@ -3,15 +3,18 @@
     <div class="page-header" id="banner">
         <div class="row">
             <div class="col-lg-12">
-                <h1>Search Movie</h1>
+                <h1>Welcome to Movie Search</h1>
             </div>
         </div>
     </div>
     <div class="main-content mt-3">
-        <h2 class="main-title">Welcome to Movie Search</h2>
-        <p>OMDB movie content search.</p>
+        <p>Popular Search: 
+            <a href="/omdb/search/Barbie">Barbie</a>
+            <a href="/omdb/search/Bear">Bear</a>
+            <a href="/omdb/search/The+Pianist">The Pianist</a>
+        </p>
         <!-- movie name input and search button -->
-        <form action="/omdb/search" method="post">
+        <form id="searchForm" method="post">
             <div class="form-group">
                 <label for="movieName">Movie Name</label>
                 <input type="text" class="form-control" id="movieName" name="movieName" placeholder="Enter movie name">
@@ -22,6 +25,9 @@
 
     <?php if (isset($data['movie']) && !empty($data['movie'])) : ?>
         <div class="row mt-5">
+            <div class="col-md-12">
+                <p><strong>Poster:</strong><br> <img src="<?php echo htmlspecialchars($data['movie']['Poster']); ?>" alt="Movie Poster"></p>
+            </div>
             <div class="col-md-6">
                 <div class="movie-result">
                     <h2>Search Result</h2>
@@ -39,7 +45,7 @@
                         <p><strong>Language:</strong> <?php echo htmlspecialchars($data['movie']['Language']); ?></p>
                         <p><strong>Country:</strong> <?php echo htmlspecialchars($data['movie']['Country']); ?></p>
                         <p><strong>Awards:</strong> <?php echo htmlspecialchars($data['movie']['Awards']); ?></p>
-                        <p><strong>Poster:</strong><br> <img src="<?php echo htmlspecialchars($data['movie']['Poster']); ?>" alt="Movie Poster"></p>
+                        
                         <p><strong>Box Office:</strong> <?php echo htmlspecialchars($data['movie']['BoxOffice']); ?></p>
                         <p><strong>IMDB Rating:</strong> <?php echo htmlspecialchars($data['movie']['imdbRating']); ?></p>
                         <p><strong>IMDB Votes:</strong> <?php echo htmlspecialchars($data['movie']['imdbVotes']); ?></p>
@@ -93,11 +99,13 @@
 
                 <h3>Reviews</h3>
                 <?php if (isset($data['reviews']) && !empty($data['reviews'])): ?>
-                    <ul>
+                    <div class=" ">
                         <?php foreach ($data['reviews'] as $review): ?>
-                            <li><?php echo htmlspecialchars($review['review']); ?></li>
+                            <div class="card p-1 my-3  bg-white rounded box-shadow">
+                                <b>User Review</b>
+                                <?php echo htmlspecialchars($review['review']); ?></div>
                         <?php endforeach; ?>
-                    </ul>
+                    </div>
                 <?php else: ?>
                     <p>No reviews available.</p>
                 <?php endif; ?>
@@ -121,4 +129,12 @@
     </div>
 </div>
 <br /><br /><br /><br /><br />
+<script>
+    document.getElementById('searchForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        var movieName = document.getElementById('movieName').value;
+        this.action = '/omdb/search/' + encodeURIComponent(movieName);
+        this.submit();
+    });
+</script>
 <?php require_once 'app/views/templates/footer.php' ?>

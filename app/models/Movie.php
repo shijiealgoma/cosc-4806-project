@@ -111,7 +111,7 @@ class Movie {
 
     // Get movie ID by name
     public function getMovieIdByName($name) {
-        echo "getMovieIdByName: " . $name;
+        // echo "getMovieIdByName: " . $name;
         
         $db = db_connect();
         $statement = $db->prepare("SELECT id FROM movie WHERE name = :name;");
