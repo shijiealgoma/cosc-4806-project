@@ -4,7 +4,7 @@
         <div class="row mb-3">
             <div class="col-lg-12">
                 <h1 class="title-style">Welcome, Dear user!</h1>
-								<div>You are not logged in</div>
+								<div>username: admin, password: admin</div>
 								<div class="mt-3">
 									<?php if(isset($_SESSION['failedAuth']) && $_SESSION['failedAuth']): ?>
 										<div class="alert alert-danger" role="alert">
@@ -30,8 +30,6 @@
 			</div>
 			<br>
 			<div><a href="/create">Create an accnout</a></div>
-            <br>
-			<div><a href="/users">Show Users</a></div>
 			<br>
 		    <button type="submit" class="btn btn-primary">Login</button>
 		</fieldset>

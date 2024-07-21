@@ -17,8 +17,8 @@ if (isset($_SESSION['auth']) == 1) {
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
-    <header class="bg-primary text-white py-3 mb-5">
+    <header class=" py-3 mb-5">
         <div class="container">
-            <h3>Reminder System</h3>
+            <h3>Movie System</h3>
         </div>
     </header>
